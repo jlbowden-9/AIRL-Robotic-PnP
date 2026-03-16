@@ -1,0 +1,405 @@
+ version="1.0"?>
+
+<robot name="fanuc_m20ib25">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin rpy="1.57 0 1.57" xyz="-1.143 -0.8255 -0.1016"/>
+      <geometry>
+        <mesh filename="Meshes/RbtBase.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="StationaryBlue">
+        <color rgba="0 0 0.5 1.0"/>
+      </material>
+    </visual>
+      <collision>
+      <origin rpy="0 0 0" xyz="0 0 .4"/>
+      <geometry>
+            <box size="0.7 0.75 0.9"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Robot Mount -->
+  <link name="RobotBase">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="Meshes/link1.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="Meshes/link1.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Shoulder -->
+  <link name="Shoulder">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.20498 -0.16799 0"/>
+      <geometry>
+        <mesh filename="Meshes/link2.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.20498 -0.16799 0"/>
+      <geometry>
+        <mesh filename="Meshes/link2.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- UpperArm -->
+  <link name="UpperArm">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.28219 -0.42443 -0.11659"/>
+      <geometry>
+        <mesh filename="Meshes/link3.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.28219 -0.42443 -0.11659"/>
+      <geometry>
+        <mesh filename="Meshes/link3.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Elbow -->
+  <link name="Elbow">
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.09373 -0.36881 -0.06909"/>
+      <geometry>
+        <mesh filename="Meshes/link4.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.09373 -0.36881 -0.06909"/>
+      <geometry>
+        <mesh filename="Meshes/link4.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ForeArm -->
+  <link name="ForeArm">
+  <mass value="67.54"/>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.01321 -0.14224 -0.0889"/>
+      <geometry>
+        <mesh filename="Meshes/link5.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba=".5 .5 0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.01321 -0.14224 -0.0889"/>
+      <geometry>
+        <mesh filename="Meshes/link5.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Wrist -->
+  <link name="Wrist">
+  <mass value="4.32"/>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.06502 0 -0.06909"/>
+      <geometry>
+        <mesh filename="Meshes/link6.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="BlueGreen">
+        <color rgba="0 .5 .5 .7"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.06502 0 -0.06909"/>
+      <geometry>
+        <mesh filename="Meshes/link6.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Flange -->
+  <link name="Flange">
+     <inertial>
+      <mass value="1.18"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".00108" ixy="0.0" ixz="0.0" iyy=".00108" iyz="0.0" izz=".00108"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.05055 -0.05055 -0.05232"/>
+      <geometry>
+        <mesh filename="Meshes/link7.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="ccc">
+        <color rgba=".5 .5 .5 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Palm -->
+  <link name="Palm">
+     <inertial>
+      <mass value="1.09"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx=".00108" ixy="0.0" ixz="0.0" iyy=".00108" iyz="0.0" izz=".00108"/>
+    </inertial>
+    <visual>
+      <origin rpy="-0.523599 0 0" xyz=".007 -.06076483841 -.02424778744"/>
+      <geometry>
+        <mesh filename="Meshes/Palm.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="palm">
+        <color rgba=".25 .375 .375 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.5708 0" xyz="0.0385 0 0"/>
+      <geometry>
+        <cylinder radius=".052" length="0.063"/>
+      </geometry>
+    </collision>
+  </link>
+
+ <!-- Fingers -->
+  <link name="Finger">
+      <inertial>
+      <mass value=".34"/>
+      <origin rpy="0 0 0" xyz="0.0 -.04 .04"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+     <visual>
+      <origin rpy="0 0 1.5708" xyz=".145 -0.0174625 0"/>
+      <geometry>
+        <mesh filename="Meshes/Finger.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="Finger">
+        <color rgba=".75 .375 .125 1"/>
+      </material>
+    </visual>
+     <!-- Box -->
+    <collision>
+      <origin rpy="0 0 0" xyz=".11 0 0.044"/>
+      <geometry>
+        <box size="0.075 0.03 0.05"/>
+      </geometry>
+     </collision>
+
+     <!-- V - grip -->
+     <collision>
+     <origin rpy="-0.297 0 0" xyz=".11 0.0075 0.016"/>
+     <geometry>
+     <box size="0.075 .01 0.001"/>
+     </geometry>
+    </collision>
+
+  <!-- V - grip -->
+    <collision>
+    <origin rpy="0.297 0 0" xyz=".11 -0.0075 0.016"/>
+    <geometry>
+    <box size="0.075 .01 0.001"/>
+    </geometry>
+    </collision>
+
+  </link>
+
+  <link name="Finger2">
+    <inertial>
+      <mass value=".34"/>
+      <origin rpy="0 0 0" xyz="0.0 -.04 .04"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+     <visual>
+     <origin rpy="0 0 1.5708" xyz=".145 -0.0174625 0"/>
+
+      <geometry>
+        <mesh filename="Meshes/Finger.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="Finger">
+        <color rgba=".75 .375 .125 1"/>
+      </material>
+    </visual>
+     <!-- Box -->
+    <collision>
+      <origin rpy="0 0 0" xyz=".11 0 0.044"/>
+      <geometry>
+        <box size="0.075 0.03 0.05"/>
+      </geometry>
+     </collision>
+
+      <!-- V - grip -->
+     <collision>
+      <origin rpy="-0.523599 0 0" xyz=".11 0.0075 0.016"/>
+      <geometry>
+        <box size="0.075 .01 0.001"/>
+      </geometry>
+     </collision>
+
+       <!-- V - grip -->
+     <collision>
+      <origin rpy="0.523599 0 0" xyz=".11 -0.0075 0.016"/>
+      <geometry>
+        <box size="0.075 .01 0.001"/>
+      </geometry>
+     </collision>
+
+  </link>
+
+  <link name="Finger3">
+    <inertial>
+      <mass value=".34"/>
+      <origin rpy="0 0 0" xyz="0.0 -.04 .04"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+     <visual>
+      <origin rpy="0 0 1.5708" xyz=".145 -0.0174625 0"/>
+      <geometry>
+        <mesh filename="Meshes/Finger.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="Finger">
+        <color rgba=".75 .375 .125 1"/>
+      </material>
+    </visual>
+         <!-- Box -->
+    <collision>
+      <origin rpy="0 0 0" xyz=".11 0 0.044"/>
+      <geometry>
+        <box size="0.075 0.03 0.05"/>
+      </geometry>
+     </collision>
+
+      <!-- V - grip -->
+     <collision>
+      <origin rpy="-0.523599 0 0" xyz=".11 0.0075 0.016"/>
+      <geometry>
+        <box size="0.075 .01 0.001"/>
+      </geometry>
+     </collision>
+
+       <!-- V - grip -->
+     <collision>
+      <origin rpy="0.523599 0 0" xyz=".11 -0.0075 0.016"/>
+      <geometry>
+        <box size="0.075 .01 0.001"/>
+      </geometry>
+     </collision>
+  </link>
+
+  <joint name="BaseJoint" type="fixed">
+    <origin rpy="0 0 1.5708" xyz="0.17145 -0.27623 0.7747"/>
+    <parent link="base_link"/>
+    <child link="RobotBase"/>
+  </joint>
+
+  <joint name="Shoulder_Joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.27534 0.16999 0.15701"/>
+    <parent link="RobotBase"/>
+    <child link="Shoulder"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="10.0" lower="-2.965" upper="2.965"/>
+     <dynamics damping=".2" friction=".2"/>
+  </joint>
+
+  <joint name="UpperArm_Joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.07493 -0.08509 0.26797"/>
+    <parent link="Shoulder"/>
+    <child link="UpperArm"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="3000" velocity="10.0" lower="-2.27" upper="2.27"/>
+    <dynamics damping=".2" friction=".2"/>
+  </joint>
+
+  <joint name="Elbow_Joint" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.01753 0.01753 0.84098"/>
+    <parent link="UpperArm"/>
+    <child link="Elbow"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="3000" velocity="10.0" lower="-4.0" upper="4.0"/>
+    <dynamics damping=".2" friction=".2"/>
+  </joint>
+
+  <joint name="ForeArm_Joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.30159 0.03962 0.24596"/>
+    <parent link="Elbow"/>
+    <child link="ForeArm"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="3000" velocity="10.0" lower="-3.5" upper="3.5"/>
+    <dynamics damping=".2" friction=".2"/>
+  </joint>
+
+  <joint name="Wrist_Joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.5842 -0.05588 0"/>
+    <parent link="ForeArm"/>
+    <child link="Wrist"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="3000" velocity="10.0" lower="-3.14" upper="3.14"/>
+
+  </joint>
+
+  <joint name="Flange_Joint" type="continuous">
+    <origin rpy="0 1.5708 0" xyz="0.08407 0.05207 0"/>
+    <parent link="Wrist"/>
+    <child link="Flange"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="30000" velocity="10.0" lower="-9.0" upper="9.0"/>
+
+  </joint>
+
+  <joint name="Hand_Joint" type="fixed">
+    <origin rpy="0 -1.5708 0" xyz="0 0 0"/>
+    <parent link="Flange"/>
+    <child link="Palm"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="10.0" lower="-3.14" upper="3.14"/>
+
+  </joint>
+
+  <joint name="Finger_Joint" type="prismatic">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="Palm"/>
+    <child link="Finger"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="10.0" lower="-.02" upper=".0254"/>
+
+  </joint>
+
+  <joint name="Finger_Joint2" type="prismatic">
+    <origin rpy="-2.0944 0 0" xyz="0 0 0"/>
+    <parent link="Palm"/>
+    <child link="Finger2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="10.0" lower="-0.02" upper=".0254"/>
+
+  </joint>
+
+  <joint name="Finger_Joint3" type="prismatic">
+    <origin rpy="2.0944 0 0" xyz="0 0 0"/>
+    <parent link="Palm"/>
+    <child link="Finger3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="3000" velocity="100.0" lower="-.02" upper=".0254"/>
+
+  </joint>
+
+
+
+
+</robot>

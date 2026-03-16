@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<robot name="Guarding">
+  <!-------------------------------------- Base Link -------------------------------------->
+  <link name="base_link">
+    <visual>
+      <origin rpy="1.57 0 -1.57" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="Meshes/guarding.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+      <material name="Safety">
+        <color rgba=".5 .5 0 .6"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="1.57 0 -1.57" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="Meshes/guarding.STL" scale="0.0254 0.0254 0.0254"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
