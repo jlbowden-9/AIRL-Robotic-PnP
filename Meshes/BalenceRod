@@ -1,0 +1,24 @@
+  <?xml version="1.0"?>
+
+<robot name="theRod">
+
+  <!-- Fingers -->
+  <link name="Finger">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="1.0"/>
+      </geometry>
+      <material name="Rod">
+        <color rgba=".75 .375 .125 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.01" length="1.0"/>
+      </geometry>
+    </collision>
+
+  </link>
+  </robot>
